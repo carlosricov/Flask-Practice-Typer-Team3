@@ -1,31 +1,26 @@
-<!DOCTYPE html>
-<html lang="en">
+{% extends 'base.html' %}    
 
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+{% block style %}
+<link href="https://fonts.googleapis.com/css2?family=Lato:wght@100;300&display=swap" rel="stylesheet">
+<link href="../static/styles/registerStyle.css" rel="stylesheet">
+{% endblock %}
 
-    <title>Register</title>
+{% block head %}
+<title>Register</title>
+{% endblock %}
 
-    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@100;300&display=swap" rel="stylesheet">
-    <link href="../static/styles/signin.css" rel="stylesheet">
-</head>
-
-<body>
-    <div class="form--wrapper">
-        <div class="form--container">
-            <h2>Register!</h2>
-            <form action="/register" method="POST">
-                <label for="username">Username: </label><br>
-                <input type="text" id="username" name="username" /><br>
-                <label for="password">Password: </label><br>
-                <input type="password" id="password" name="password" /><br><br>
-                <input class="button " type="submit" id="send-register" name="register" value="Register" /><br>
-            </form>
-            <p>Already have an account? <a href="/login">Login</a></p>
-        </div>
+{% block body %}
+<div class="form--wrapper">
+    <div class="form--container">
+        <h2>Register!</h2>
+        <form action="/register" method="POST">
+            <label for="username">Username: </label><br>
+            <input type="text" id="username" name="username" /><br>
+            <label for="password">Password: </label><br>
+            <input type="password" id="password" name="password" /><br><br>
+            <input class="button " type="submit" id="send-register" name="register" value="Register" /><br>
+        </form>
+        <p>Already have an account? <a href="/login">Login</a></p>
     </div>
-</body>
-
-</html>
+</div>
+{% endblock %}
