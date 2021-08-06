@@ -1,8 +1,8 @@
 {% extends 'base.html' %}
 
 {% block style %}
-<link rel="stylesheet" href="../static/styles/login.css">
 <link rel="stylesheet" href="{{ url_for('static', filename='styles/landing.css') }}">
+<link rel="stylesheet" href="../static/styles/login.css">
 {% endblock %}
 
 {% block head %}
@@ -10,47 +10,43 @@
 {% endblock %}
 
 {% block body %}
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" id="registerNav">
+<nav class="navbar navbar-expand-lg navbar-dark bg-transparent fixed-top" id="registerNav">
     <div class="container px-4">
-        <a class="navbar-brand" href="/" data-target="#page-top">Practice Typer</a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive"
-            aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation"><span
-                class="navbar-toggler-icon"></span></button>
-        <div class="collapse navbar-collapse" id="navbarResponsive">
-            <ul class="navbar-nav ms-auto">
-            </ul>
-        </div>
+        <a class="navbar-brand" href="/">Back to Home</a>
     </div>
 </nav>
-<form action="" method="post">
-    <div class="container2">
-        <h1>Register</h1>
-        <p>Fill in to register</p>
-        <hr>
 
-        <label for="name"><b>Name:</b></label>
-        <input type="text" id="name" name="name" required>
-
-        <label for="lastname"><b>Last name:</b></label>
-        <input type="text" id="lastname" name="lastname" required>
-
-        <label for="username"><b>Username:</b></label>
-        <input type="text" id="username" name="username" required>
-
-        <label for="password"><b>Password:</b></label>
-        <input type="password" placeholder="Enter Password" name="password" id="password" required>
-
-        <!-- <label for="psw-repeat"><b>Repeat Password</b></label>
-    <input type="password" placeholder="Repeat Password" name="psw-repeat" id="psw-repeat" required> -->
-        <hr>
-
-        <!-- <p>By creating an account you agree to our <a href="#">Terms & Privacy</a>.</p> -->
-        <button type="submit" class="registerbtn">Register</button>
+<div id="body-size">
+    <div id="regis">
+        <h1 class="text-center text-white pt-5">Register</h1>
+        <h6 class="text-center text-white pt-1">Fill in to create an account</h6>
     </div>
+    <div class="container sign-box-color text-white shadow-lg rounded" id="login-bx">
+        <form method="post">
+            <div class="form-group px-5 pt-4 pb-4">
+                <label for="name"><b>First Name:</b></label>
+                <input type="text" class="form-control-sm" id="name" name="name" placeholder="John" required>
 
-    <div class="container2 signin">
-        <p>Already have an account? <a href="/login">Login!</a>.</p>
+                <label for="lastname"><b>Last name:</b></label>
+                <input type="text" class="form-control-sm" id="lastname" name="lastname" placeholder="Doe" required>
+
+                <label for="username"><b>Username:</b></label>
+                <input type="text" class="form-control-sm" id="username" name="username" placeholder="Enter Username" required>
+
+                <label for="password"><b>Password:</b></label>
+                <input type="password" class="form-control-sm" placeholder="Enter Password" name="password" id="password" required>
+
+                <!-- <label for="psw-repeat"><b>Repeat Password</b></label>
+            <input type="password" placeholder="Repeat Password" name="psw-repeat" id="psw-repeat" required> -->
+                <hr>
+                <!-- <p>By creating an account you agree to our <a href="#">Terms & Privacy</a>.</p> -->
+                <button type="submit" class="btn btn-success btn-md w-100 pb-2">Register</button>
+            </div>
+        </form>
     </div>
-</form>
+    <div class="container w-100 bg-transparent text-white d-flex align-items-center justify-content-center pt-4">
+        <p>Already have an account? <a style="color: white;" href="/login">Login!</a></p>
+    </div>    
+</div>
 
 {% endblock %}
