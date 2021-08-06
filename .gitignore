@@ -129,6 +129,4 @@ dmypy.json
 # Pyre type checker
 .pyre/
 
-# Database stuff
 flask.sqlite
-*.DS_Store
