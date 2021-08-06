@@ -6,6 +6,7 @@
 <link rel="stylesheet" href="{{ url_for('static', filename='styles/landing.css') }}">
 <!-- CSS only -->
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+<link href="../static/styles/header.css" rel="stylesheet">
 <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
 <script src="../static/js/animation.js"></script>
@@ -36,8 +37,8 @@
     </nav>
 
     <!-- Header-->
-    <header class="bg-primary bg-gradient text-white">
-        <div class="container px-4 text-center">
+    <header class="bg-primary header-wrapper text-white d-flex align-items-center justify-content-center">
+        <div class="container px-5 text-center">
             <h1 class="fw-bolder"><span class="txt-rotate" data-period="1500"
                     data-rotate='[  "Practice_Typer();", "System.out.println();", "printf();", "print()" ]'></span>
             </h1>
@@ -62,7 +63,6 @@
                         <li>Current support for up to 3 languages: <em>Java, C, & Python</em> </li>
                         <li>Easy-to-Use interface that's perfect for getting straight to typin' and to practicin' </li>
                         <li>User-accounts that keep track of your individual progress and in-practice stats</li>
-                        <li></li>
                     </ul>
                 </div>
             </div>
@@ -70,7 +70,7 @@
     </section>
 
     <!-- Services section-->
-    <section class="bg-light" id="services">
+    <section id="services">
         <div class="container px-4">
             <div class="row gx-4 justify-content-center">
                 <div class="col-lg-8" data-aos="fade-up" data-aos-duration="2000">
@@ -107,7 +107,7 @@
     <!-- Footer-->
     <footer class="py-5 bg-dark">
         <div class="container px-4">
-            <p class="m-0 text-center text-white">Copyright &copy; Major League Hacking 2021</p>
+            <p class="m-0 text-center text-white">Copyright &copy; MLH Fellowship 2021</p>
         </div>
     </footer>
 
