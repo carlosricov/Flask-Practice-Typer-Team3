@@ -2,6 +2,7 @@
 
 {% block style %}
 <link rel="stylesheet" href="../static/styles/login.css">
+<link rel="stylesheet" href="{{ url_for('static', filename='styles/landing.css') }}">
 {% endblock %}
 
 {% block head %}
@@ -9,8 +10,20 @@
 {% endblock %}
 
 {% block body %}
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" id="loginNan">
+  <div class="container px-4">
+    <a class="navbar-brand" href="/" data-target="#page-top">Practice Typer</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive"
+      aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation"><span
+        class="navbar-toggler-icon"></span></button>
+    <div class="collapse navbar-collapse" id="navbarResponsive">
+      <ul class="navbar-nav ms-auto">
+      </ul>
+    </div>
+  </div>
+</nav>
 <form action="" method="post">
-  <div class="container">
+  <div class="container2">
     <h1>Login</h1>
     <p>Fill in to login</p>
     <hr>
@@ -29,9 +42,9 @@
     <button type="submit" class="registerbtn">Sign In</button>
   </div>
 
-  <div class="container signin">
+  <div class="container2 signin">
     <p>Don't have an account? <a href="/register">Register</a>.</p>
   </div>
-</form> 
+</form>
 
 {% endblock %}
