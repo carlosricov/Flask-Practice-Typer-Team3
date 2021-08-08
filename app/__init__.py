@@ -1,17 +1,43 @@
-import os
-from flask import Flask, render_template, Response, request
+from datetime import timedelta
+from functools import wraps
+from flask import Flask, render_template, Response, request, redirect, url_for, session, flash
 from werkzeug.security import check_password_hash, generate_password_hash
 from . import db
 from app.db import get_db
+import os
 
 app = Flask(__name__)
 app.config['DATABASE'] = os.path.join(os.getcwd(), 'flask.sqlite')
+
+# Key for keeping client/server connection secure. 
+app.secret_key = 'd078e5e4bbd244e1a18ab1d1890157b7'
+
+# Keep the user logged in.
+app.permanent_session_lifetime = timedelta(hours=24)
+
 db.init_app(app)
 
+# We must confirm the user logs in before accessing the dashboard.
+def login_required(f):
+    @wraps(f)
+    def wrap(*args, **kwargs):
+        if 'logged_in' in session:
+            return f(*args, **kwargs)
+        else:
+            flash('Login required')
+            return redirect(url_for('login'))
+    
+    return wrap
 
+# Landing page.
 @app.route("/")
 def index():
     return render_template("index.html")
+
+# Health Checkpoint.
+@app.route("/health", methods=["GET"])
+def health():
+    return Response("Something Here"), 200
 
 @app.route("/login", methods=('GET', 'POST'))
 def login():
@@ -30,9 +56,11 @@ def login():
             error = 'Incorrect password.'
 
         if error is None:
-            return "Login Successful", 200 
+            session['logged_in'] = True
+            return redirect(url_for('dash')), 200 
         else:
-            return error, 418
+            flash(error)
+            return render_template("login.html"), 418
 
     return render_template("login.html")
 
@@ -65,10 +93,8 @@ def register():
 
     return render_template("register.html")
 
-# Health Checkpoint.
-@app.route("/health", methods=["GET"])
-def health():
-    return Response("Something Here"), 200
-
-
 # More pages go below here.
+@app.route('/dash/')
+@login_required
+def dash():
+    return render_template('dash.html')
