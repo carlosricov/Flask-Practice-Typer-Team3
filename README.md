@@ -77,11 +77,8 @@
 <!-- USAGE EXAMPLES -->
 ## Usage
 
-1. Click on start button to acess bios and links.
-   
-2. Click on About us tab to access fun facts about us. 
-   
-3. Click on our names to access our pictures.
+1. TO DO
+2. TO DO
 
 
 <!-- CONTRIBUTIONS -->
@@ -104,7 +101,7 @@ Distributed under the MIT License. See `LICENSE` for more information.
 <!-- CONTACT -->
 ## Contact
 
-MLH Fellowship - [@MLHacks](https://twitter.com/MLHacks) - admissions@mlhfellowship.recruitee.com
+MLH Fellowship - [@MLHacks](https://twitter.com/MLHacks) - [admissions@mlhfellowship.recruitee.com] (admissions@mlhfellowship.recruitee.com)
 
 Project Link: [https://github.com/carlosricov/Flask-Practice-Typer-Team3](https://github.com/carlosricov/Flask-Practice-Typer-Team3)
 
