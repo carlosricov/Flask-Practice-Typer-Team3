@@ -51,7 +51,7 @@
 <details open="open">
   <summary><h2 style="display: inline-block">Table of Contents</h2></summary>
   <ol>
-    <li><a href="#about-the-project">Home Page</a></li>
+    <li><a href="#home-page">Home Page</a></li>
     <li><a href="#built-with">Built With</a></li>
     <li><a href="#usage">Usage</a></li>
     <li><a href="#contributions">Contributions</a></li>
