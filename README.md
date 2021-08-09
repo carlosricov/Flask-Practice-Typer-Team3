@@ -106,7 +106,7 @@ Distributed under the MIT License. See `LICENSE` for more information.
 
 MLH Fellowship - [@MLHacks](https://twitter.com/MLHacks) - admissions@mlhfellowship.recruitee.com
 
-Project Link: [https://github.com/github_username/repo_name](https://github.com/carlosricov/Flask-Practice-Typer-Team3)
+Project Link: [https://github.com/carlosricov/Flask-Practice-Typer-Team3](https://github.com/carlosricov/Flask-Practice-Typer-Team3)
 
 
 
