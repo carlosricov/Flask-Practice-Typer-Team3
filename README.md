@@ -1,5 +1,5 @@
 <!--
-*** Thanks for checking out portfolio-team4. If you have a suggestion
+*** Thanks for checking out Flask-Practice-Typer-Team3. If you have a suggestion
 *** that would make this better, please open an issue.
 *** Thanks again!
 ***
@@ -27,7 +27,7 @@
 <!-- PROJECT LOGO -->
 <br />
 <p align="center">
-  <a href="https://github.com/MLH-Fellowship/portfolio-team4">
+  <a href="https://github.com/carlosricov/Flask-Practice-Typer-Team3">
     <img src="images/logo.png" alt="Logo" width="600" height="180">
   </a>
 
@@ -36,12 +36,12 @@
   <p align="center">
     A Flask application dedicated to improving your programming typing speed.
     <br />
-    <a href="https://github.com/MLH-Fellowship/portfolio-team4"><strong>Explore the docs »</strong></a>
+    <a href="https://github.com/carlosricov/Flask-Practice-Typer-Team3"><strong>Explore the docs »</strong></a>
     <br />
     <br />
-    <a href="https://github.com/MLH-Fellowship/portfolio-team4/issues">Report Bug</a>
+    <a href="https://github.com/carlosricov/Flask-Practice-Typer-Team3/issues">Report Bug</a>
     ·
-    <a href="https://github.com/MLH-Fellowship/portfolio-team4/issues">Request Feature</a>
+    <a href="https://github.com/carlosricov/Flask-Practice-Typer-Team3/issues">Request Feature</a>
   </p>
 </p>
 
