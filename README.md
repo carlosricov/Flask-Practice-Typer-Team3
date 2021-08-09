@@ -1,6 +1,3 @@
-# Flask-Practice-Typer-Team3
-A Flask application dedicated to improving your programming typing speed.
-
 <!--
 *** Thanks for checking out portfolio-team4. If you have a suggestion
 *** that would make this better, please open an issue.
@@ -34,10 +31,10 @@ A Flask application dedicated to improving your programming typing speed.
     <img src="images/logo.png" alt="Logo" width="800" height="150">
   </a>
 
-  <h1 align="center">Team 4 Portfolio Website</h1>
+  <h1 align="center">Flask-Practice-Typer-Team3</h1>
 
   <p align="center">
-    A concise portfolio website that displays a bio, LinkedIn and GitHub links, and a fun fact for each of the members of the team.
+    A Flask application dedicated to improving your programming typing speed.
     <br />
     <a href="https://github.com/MLH-Fellowship/portfolio-team4"><strong>Explore the docs »</strong></a>
     <br />
