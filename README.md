@@ -28,7 +28,7 @@
 <br />
 <p align="center">
   <a href="https://github.com/MLH-Fellowship/portfolio-team4">
-    <img src="images/logo.png" alt="Logo" width="600" height="150">
+    <img src="images/logo.png" alt="Logo" width="600" height="200">
   </a>
 
   <h1 align="center">Flask-Practice-Typer-Team3</h1>
