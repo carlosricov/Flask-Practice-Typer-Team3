@@ -4,13 +4,15 @@ from flask import Flask, render_template, Response, request, redirect, url_for, 
 from werkzeug.security import check_password_hash, generate_password_hash
 from . import db
 from app.db import get_db
+from decouple import config
 import os
 
 app = Flask(__name__)
 app.config['DATABASE'] = os.path.join(os.getcwd(), 'flask.sqlite')
 
-# Key for keeping client/server connection secure. 
-app.secret_key = 'd078e5e4bbd244e1a18ab1d1890157b7'
+# Key for keeping client/server connection secure.
+secretKey = config('secretKey', default='') 
+app.secret_key = secretKey
 
 # Keep the user logged in.
 app.permanent_session_lifetime = timedelta(hours=24)
