@@ -115,12 +115,12 @@ Project Link: [https://github.com/github_username/repo_name](https://github.com/
 
 <!-- MARKDOWN LINKS & IMAGES -->
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
-[contributors-shield]: https://img.shields.io/github/contributors/MLH-Fellowship/portfolio-team4.svg?style=for-the-badge
-[contributors-url]: https://github.com/MLH-Fellowship/portfolio-team4/graphs/contributors
-[issues-shield]: https://img.shields.io/github/issues/MLH-Fellowship/portfolio-team4.svg?style=for-the-badge
-[issues-url]: https://github.com/MLH-Fellowship/portfolio-team4/issues
-[license-shield]: https://img.shields.io/github/license/MLH-Fellowship/portfolio-team4.svg?style=for-the-badge
-[license-url]: https://github.com/MLH-Fellowship/portfolio-team4/blob/master/LICENSE
+[contributors-shield]: https://img.shields.io/github/contributors/carlosricov/Flask-Practice-Typer-Team3.svg?style=for-the-badge
+[contributors-url]: https://github.com/carlosricov/Flask-Practice-Typer-Team3/graphs/contributors
+[issues-shield]: https://img.shields.io/github/issues/carlosricov/Flask-Practice-Typer-Team3.svg?style=for-the-badge
+[issues-url]: https://github.com/carlosricov/Flask-Practice-Typer-Team3/issues
+[license-shield]: https://img.shields.io/github/license/carlosricov/Flask-Practice-Typer-Team3.svg?style=for-the-badge
+[license-url]: https://github.com/carlosricov/Flask-Practice-Typer-Team3/blob/master/LICENSE
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
 [linkedin-url]: https://www.linkedin.com/company/major-league-hacking/mycompany/
 [product-screenshot]: images/screenshot.png
