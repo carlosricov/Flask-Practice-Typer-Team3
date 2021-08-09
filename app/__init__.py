@@ -87,7 +87,7 @@ def register():
                 (username, generate_password_hash(password))
             )
             db.commit()
-            return f"User {username} created successfully"
+            return render_template("index.html")
         else:
             return error, 418
 
@@ -98,3 +98,8 @@ def register():
 @login_required
 def dash():
     return render_template('dash.html')
+
+@app.route('/typer/')
+@login_required
+def typer():
+    return render_template("typer.html")
