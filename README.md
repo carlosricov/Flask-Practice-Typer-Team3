@@ -87,10 +87,10 @@
 <!-- CONTRIBUTIONS -->
 ## Contributions
 
-1. Gibson Sanchez : Project Setup, About us Page
-2. Ji-Oh Kim : Home Page, Fun Facts page
-3. Valerie Mac Comish : README and LICENSE
-4. Shivi Chaubey : Task management
+1. Carlos Ricoveri :
+2. Gibson Sanchez :
+3. Juan Carlos Hurtado :
+4. Valerie Mac Comish : README
 
 
 
@@ -106,7 +106,7 @@ Distributed under the MIT License. See `LICENSE` for more information.
 
 MLH Fellowship - [@MLHacks](https://twitter.com/MLHacks) - admissions@mlhfellowship.recruitee.com
 
-Project Link: [https://github.com/github_username/repo_name](https://github.com/MLH-Fellowship/portfolio-team4)
+Project Link: [https://github.com/github_username/repo_name](https://github.com/carlosricov/Flask-Practice-Typer-Team3)
 
 
 
