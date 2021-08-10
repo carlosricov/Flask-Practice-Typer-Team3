@@ -1,5 +1,6 @@
 from datetime import timedelta
 from functools import wraps
+from logging import log
 from flask import Flask, render_template, Response, request, redirect, url_for, session, flash
 from werkzeug.security import check_password_hash, generate_password_hash
 from . import db
@@ -96,12 +97,22 @@ def register():
     return render_template("register.html")
 
 # More pages go below here.
-@app.route('/dash/')
+@app.route('/dash/home')
 @login_required
 def dash():
-    return render_template('dash.html')
+    return render_template('/dash/home.html')
 
-@app.route('/typer/')
+@app.route('/dash/typer')
 @login_required
 def typer():
-    return render_template("typer.html")
+    return render_template("/dash/typer.html")
+
+@app.route('/dash/settings')
+@login_required
+def settings():
+    return render_template('/dash/settings.html')
+
+@app.route('/dash/settings/edit')
+@login_required
+def edit():
+    return render_template('/dash/settings/edit.html')

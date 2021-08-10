@@ -3,11 +3,12 @@
 {% block style %}
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
 <link rel="stylesheet" href="{{ url_for('static', filename='styles/landing.css') }}">
-<link rel="stylesheet" href="../static/styles/dash.css">
+<link rel="stylesheet" href="/static/styles/dash.css">
+<link rel="stylesheet" href="/static/styles/settings.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.min.css">
 <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/solid.js" integrity="sha384-tzzSw1/Vo+0N5UhStP3bvwWPq+uvzCMfrN1fEFe+xBmv1C/AtVX5K0uZtmcHitFZ" crossorigin="anonymous"></script>
 <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/fontawesome.js" integrity="sha384-6OIrr52G08NpOFSZdxxz1xdNSndlD4vdcf/q2myIUVO0VsqaGHJsB0RaBE01VTOY" crossorigin="anonymous"></script>
-<script src="../static/js/animation.js"></script>
+<script src="/static/js/animation.js"></script>
 {% endblock %}
 
 {% block head %}
@@ -28,14 +29,14 @@
 
         <ul class="list-unstyled components">
             <p>Navigation Menu</p>
-            <li class="active">
-                <a href="#">Home</a>
+            <li>
+                <a href="/dash/home">Home</a>
             </li>
             <li>
                 <a href="#">Stats</a>
             </li>
-            <li>
-                <a href="#">Settings</a>
+            <li class="active">
+                <a href="/dash/settings">Settings</a>
             </li>
             <li>
                 <a href="#">About</a>
@@ -57,7 +58,6 @@
 
     <!-- Page Content  -->
     <div id="content">
-
         <nav class="navbar navbar-expand-lg navbar-dark bg-transparent">
             <div class="container-fluid">
 
@@ -72,34 +72,78 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="nav navbar-nav ml-auto">
                         <li class="nav-item active">
-                            <a class="nav-link" href="/dash">Back to Home</a>
+                            <a class="nav-link" href="/dash/home">Back to Home</a>
                         </li>
                     </ul>
                 </div>
             </div>
         </nav>
-
-        <div class="container text-center" id="txt-cont">
-            <h2>Welcome to Practice Typer!</h2>
-            <br>
-            <p class="text-justify">Practice Typer is a tool dedicated to optimizing your time while coding. Whether you are a beginner programmer or an experienced veteran looking to improve your typing speed, Practice Typer is the perfect tool for you!<br><br> Explore the other pages using our handy sidebar with the button on the top left of the screen. In the sidebar you can view your statistics, account settings, and our about section. From there you can also sign out. <br><br> Click the button below to begin a practice session. Don't forget to select your language of choice in user settings and, as always, happy coding!</p>
-            <br>
-            <h5 class="d-flex justify-content-center">Become a <em><span class="txt-rotate" data-period="1500"
-                data-rotate='[  "&nbsp;better&nbsp;", "&nbsp;faster&nbsp;", "&nbsp;competitive&nbsp;", "&nbsp;fantastic&nbsp;", "&nbsp;phenomenal&nbsp;", "&nbsp;quicker&nbsp;", "&nbsp;practical&nbsp;", "&nbsp;quick-witted&nbsp;", "&nbsp;well-versed&nbsp;", "&nbsp;fluent&nbsp;"]'></span>
-            </em> programmer.</h5>
-        </div>
-        
-        <br>
-        <div class="container fluid px-5" id="home-but">
-            <a href="/typer/" id="but3" class="btn btn-lg btn-bg-transparent text-white d-flex align-items-center justify-content-center shadow rounded">Start a Session</a>
-        </div>
-
-        <footer class="pt-5 fs-6">
-            <div class="px-5 text-center text-white container fluid" id="footer-cont">
-                <br>
-                <p class="text-center pt-4" style="font-size: small;" id="foot-text">Copyright &copy; MLH Fellowship 2021</p>
+        <div class="container">
+            <div class="main-body">
+            
+                  <!-- Breadcrumb -->
+                  <nav aria-label="breadcrumb" class="main-breadcrumb">
+                    <div class="align-center d-flex flex-column align-items-center">
+                        <h2>Settings</h2>
+                    </div>
+                    <hr>
+                  </nav>
+                  <!-- /Breadcrumb -->
+                  <div class="row gutters-sm">
+                    <div class="col-md-4 mb-3">
+                      <div class="card text-center d-flex flex-column align-items-center ">
+                        <div class="card-body">
+                          <div class="d-flex flex-column align-items-center text-center">
+                            <img src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="Profile Pic" class="rounded-circle" width="150">
+                            <div class="mt-3">
+                              <h4>Carlos Ricoveri</h4>
+                            </div>
+                          </div>
+                          <hr>
+                            <p class="text-secondary font-italic" style="font-size: small;">Member since&nbsp;<span class="text-secondary font-italic" style="font-size: small;">August 4, 2021</span></p>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-md-8">
+                      <div class="card mb-3" id="card2">
+                        <div class="card-body">
+                          <div class="row">
+                            <div class="col-sm-3">
+                              <h6 class="mb-0">Full Name</h6>
+                            </div>
+                            <div class="col-sm-9 text-secondary">
+                              <input type="text" class="form-control" value="Carlos Ricoveri">
+                            </div>
+                          </div>
+                          <hr>
+                          <div class="row">
+                            <div class="col-sm-3">
+                              <h6 class="mb-0">Username</h6>
+                            </div>
+                            <div class="col-sm-9 text-secondary">
+                              <input type="text" class="form-control" value="Green">
+                            </div>
+                          </div>
+                          <hr>
+                          <div class="row">
+                            <div class="col-sm-3">
+                              <h6 class="mb-0">Password</h6>
+                            </div>
+                            <div class="col-sm-9 text-secondary">
+                              <input type="password" class="form-control" placeholder="******">
+                            </div>
+                          </div>
+                          <hr>
+                          <div class="row px-5">
+                            <div class="col-sm-12 d-flex flex-column align-items-center px-5">
+                              <a id="but3" class="btn btn-block btn-bg-transparent text-white d-flex align-items-center justify-content-center shadow rounded" href="/dash/settings"><input type="button" class="btn btn-bg-transparent text-white" value="Save Changes"></a>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                  </div>
+                </div>
             </div>
-        </footer>
     </div>
 </div>
 
