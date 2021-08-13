@@ -1,53 +1,17 @@
-from datetime import timedelta
-from functools import wraps
-from logging import log
-from flask import Flask, render_template, Response, request, redirect, url_for, session, flash
+import os
+from flask import Flask, render_template, Response, request
 from werkzeug.security import check_password_hash, generate_password_hash
 from . import db
 from app.db import get_db
-from decouple import config
-import os
-from flask_toastr import Toastr
 
 app = Flask(__name__)
 app.config['DATABASE'] = os.path.join(os.getcwd(), 'flask.sqlite')
-
-# Toastr initialize.
-toastr = Toastr(app)
-
-# Key for keeping client/server connection secure.
-secretKey = config('secretKey', default='') 
-app.secret_key = secretKey
-
-# Keep the user logged in.
-app.permanent_session_lifetime = timedelta(hours=24)
-
 db.init_app(app)
 
-# We must confirm the user logs in before accessing the dashboard.
-def login_required(f):
-    @wraps(f)
-    def wrap(*args, **kwargs):
-        if 'logged_in' in session:
-            return f(*args, **kwargs)
-        else:
-            flash('Login required', 'warning')
-            return redirect(url_for('login'))
-    
-    return wrap
 
-# Landing page.
 @app.route("/")
 def index():
-    session['logged_in'] = False
-    flash("User is not logged in", 'info')
-
     return render_template("index.html")
-
-# Health Checkpoint.
-@app.route("/health", methods=["GET"])
-def health():
-    return Response("Something Here"), 200
 
 @app.route("/login", methods=('GET', 'POST'))
 def login():
@@ -55,26 +19,18 @@ def login():
         username = request.form.get('username')
         password = request.form.get('password')
         db = get_db()
-        error = 0
+        error = None
         user = db.execute(
             'SELECT * FROM user WHERE username = ?', (username,)
         ).fetchone()
 
         if user is None:
-            error = 1
+            error = 'Incorrect username.'
         elif not check_password_hash(user['password'], password):
-            error = 2
+            error = 'Incorrect password.'
 
-        if error == 0:
-            session['logged_in'] = True
-            flash(f"User {username} logged in!", 'success')
-            return redirect(url_for('dash')), 200 
-        elif error == 1:
-            flash("Incorrect username", 'error')
-            return render_template("login.html"), 418
-        elif error == 2:
-            flash("Incorrect password", 'error')
-            return render_template("login.html"), 418
+        if error is None:
+            return "Login Successful", 200 
         else:
             return error, 418
 
@@ -86,56 +42,33 @@ def register():
         username = request.form.get('username')
         password = request.form.get('password')
         db = get_db()
-        error = 0
+        error = None
 
         if not username:
-            error = 1
+            error = 'Username is required.'
         elif not password:
-            error = 2
+            error = 'Password is required.'
         elif db.execute(
             'SELECT id FROM user WHERE username = ?', (username,)
         ).fetchone() is not None:
-            error = 3
+            error = f"User {username} is already registered."
 
-        if error == 0:
+        if error is None:
             db.execute(
                 'INSERT INTO user (username, password) VALUES (?, ?)',
                 (username, generate_password_hash(password))
             )
             db.commit()
-            flash(f"User {username} created successfully", 'success')
-            return render_template("index.html")
-        elif error == 1:
-            flash("Username is required", 'error')
-            return render_template("register.html"), 418
-        elif error == 2:
-            flash("Password is required", 'error')
-            return render_template("register.html"), 418
-        elif error == 3:
-            flash(f"User {username} is already registered.", 'error')
-            return render_template("register.html"), 418
+            return f"User {username} created successfully"
         else:
             return error, 418
 
     return render_template("register.html")
 
+# Health Checkpoint.
+@app.route("/health", methods=["GET"])
+def health():
+    return Response("Something Here"), 200
+
+
 # More pages go below here.
-@app.route('/dash/home')
-@login_required
-def dash():
-    return render_template('/dash/home.html')
-
-@app.route('/dash/typer')
-@login_required
-def typer():
-    return render_template("/dash/typer.html")
-
-@app.route('/dash/settings')
-@login_required
-def settings():
-    return render_template('/dash/settings.html')
-
-@app.route('/dash/settings/edit')
-@login_required
-def edit():
-    return render_template('/dash/settings/edit.html')

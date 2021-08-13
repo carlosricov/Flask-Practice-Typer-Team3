@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en-US">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -8,26 +7,10 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <link rel="icon" type="image/x-icon" href="../static/img/the_sea_turtle.ico">
 
-    {{ toastr.include_jquery() }}
-    {{ toastr.include_toastr_css() }}
-    {{ toastr.message() }}
-
-    <style>
-        #toast-container>div{
-            color: white !important;
-            background-color: #282828 !important;
-            border-color: #282828 !important;
-            opacity: 10;
-        }
-    </style>
-
     {% block style %}{% endblock %}
     {% block head %}{% endblock %}
 </head>
-
 <body>
-    {{ toastr.include_toastr_js() }}
     {% block body %}{% endblock %}
 </body>
-
 </html>
