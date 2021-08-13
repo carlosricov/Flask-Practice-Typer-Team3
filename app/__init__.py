@@ -19,13 +19,13 @@ import os
 from flask_toastr import Toastr
 
 app = Flask(__name__)
-app.config['DATABASE'] = os.path.join(os.getcwd(), 'flask.sqlite')
+app.config["DATABASE"] = os.path.join(os.getcwd(), "flask.sqlite")
 
 # Toastr initialize.
 toastr = Toastr(app)
 
 # Key for keeping client/server connection secure.
-secretKey = config('secretKey', default='') 
+secretKey = config("secretKey", default="")
 app.secret_key = secretKey
 
 # Keep the user logged in.
@@ -37,63 +37,67 @@ db.init_app(app)
 def login_required(f):
     @wraps(f)
     def wrap(*args, **kwargs):
-        if 'logged_in' in session:
+        if "logged_in" in session:
             return f(*args, **kwargs)
         else:
-            flash('Login required', 'warning')
-            return redirect(url_for('login'))
-    
+            flash("Login required", "warning")
+            return redirect(url_for("login"))
+
     return wrap
+
 
 # Landing page.
 @app.route("/")
 def index():
-    session['logged_in'] = False
-    flash("User is not logged in", 'info')
+    session["logged_in"] = False
+    flash("User is not logged in", "info")
 
     return render_template("index.html")
+
 
 # Health Checkpoint.
 @app.route("/health", methods=["GET"])
 def health():
     return Response("Something Here"), 200
 
-@app.route("/login", methods=('GET', 'POST'))
+
+@app.route("/login", methods=("GET", "POST"))
 def login():
-    if request.method == 'POST':
-        username = request.form.get('username')
-        password = request.form.get('password')
+    if request.method == "POST":
+        username = request.form.get("username")
+        password = request.form.get("password")
         db = get_db()
         error = 0
         user = db.execute(
-            'SELECT * FROM user WHERE username = ?', (username,)
+            "SELECT * FROM user WHERE username = ?", (username,)
         ).fetchone()
 
         if user is None:
             error = 1
-        elif not check_password_hash(user['password'], password):
+        elif not check_password_hash(user["password"], password):
             error = 2
 
         if error == 0:
-            session['logged_in'] = True
-            flash(f"User {username} logged in!", 'success')
-            return redirect(url_for('dash')), 200 
+            session["logged_in"] = True
+            flash(f"User {username} logged in!", "success")
+            return redirect(url_for("dash")), 200
         elif error == 1:
-            flash("Incorrect username", 'error')
+            flash("Incorrect username", "error")
             return render_template("login.html"), 418
         elif error == 2:
-            flash("Incorrect password", 'error')
+            flash("Incorrect password", "error")
             return render_template("login.html"), 418
         else:
             return error, 418
 
     return render_template("login.html")
 
-@app.route("/register", methods=('GET', 'POST'))
+
+@app.route("/register", methods=("GET", "POST"))
 def register():
-    if request.method == 'POST':
-        username = request.form.get('username')
-        password = request.form.get('password')
+    if request.method == "POST":
+        username = request.form.get("username")
+        password = request.form.get("password")
         db = get_db()
         error = 0
 
@@ -101,50 +105,55 @@ def register():
             error = 1
         elif not password:
             error = 2
-        elif db.execute(
-            'SELECT id FROM user WHERE username = ?', (username,)
-        ).fetchone() is not None:
+        elif (
+            db.execute("SELECT id FROM user WHERE username = ?", (username,)).fetchone()
+            is not None
+        ):
             error = 3
 
         if error == 0:
             db.execute(
-                'INSERT INTO user (username, password) VALUES (?, ?)',
-                (username, generate_password_hash(password))
+                "INSERT INTO user (username, password) VALUES (?, ?)",
+                (username, generate_password_hash(password)),
             )
             db.commit()
-            flash(f"User {username} created successfully", 'success')
+            flash(f"User {username} created successfully", "success")
             return render_template("index.html")
         elif error == 1:
-            flash("Username is required", 'error')
+            flash("Username is required", "error")
             return render_template("register.html"), 418
         elif error == 2:
-            flash("Password is required", 'error')
+            flash("Password is required", "error")
             return render_template("register.html"), 418
         elif error == 3:
-            flash(f"User {username} is already registered.", 'error')
+            flash(f"User {username} is already registered.", "error")
             return render_template("register.html"), 418
         else:
             return error, 418
 
     return render_template("register.html")
 
+
 # More pages go below here.
-@app.route('/dash/home')
+@app.route("/dash/home")
 @login_required
 def dash():
-    return render_template('/dash/home.html')
+    return render_template("/dash/home.html")
 
-@app.route('/dash/typer')
+
+@app.route("/dash/typer")
 @login_required
 def typer():
     return render_template("/dash/typer.html")
 
-@app.route('/dash/settings')
+
+@app.route("/dash/settings")
 @login_required
 def settings():
-    return render_template('/dash/settings.html')
+    return render_template("/dash/settings.html")
 
-@app.route('/dash/settings/edit')
+
+@app.route("/dash/settings/edit")
 @login_required
 def edit():
-    return render_template('/dash/settings/edit.html')
+    return render_template("/dash/settings/edit.html")
