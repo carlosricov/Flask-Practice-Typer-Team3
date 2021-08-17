@@ -21,9 +21,6 @@ from flask_toastr import Toastr
 app = Flask(__name__)
 app.config["DATABASE"] = os.path.join(os.getcwd(), "flask.sqlite")
 
-# Toastr initialize.
-toastr = Toastr(app)
-
 # Key for keeping client/server connection secure.
 secretKey = config("secretKey", default="")
 app.secret_key = secretKey
@@ -32,6 +29,9 @@ app.secret_key = secretKey
 app.permanent_session_lifetime = timedelta(hours=24)
 
 db.init_app(app)
+
+# Toastr initialize.
+toastr = Toastr(app)
 
 # We must confirm the user logs in before accessing the dashboard.
 def login_required(f):
@@ -49,8 +49,9 @@ def login_required(f):
 # Landing page.
 @app.route("/")
 def index():
-    session["logged_in"] = False
-    flash("User is not logged in", "info")
+    if "logged_in" in session:
+        flash("User is logged in.")
+        return redirect(url_for("dash"), 200)
 
     return render_template("index.html")
 
@@ -63,7 +64,11 @@ def health():
 
 @app.route("/login", methods=("GET", "POST"))
 def login():
-    if request.method == "POST":
+    if "logged_in" in session:
+        flash("User is logged in.")
+        return redirect(url_for("dash"), 200)
+
+    elif request.method == "POST":
         username = request.form.get("username")
         password = request.form.get("password")
         db = get_db()
@@ -95,7 +100,11 @@ def login():
 
 @app.route("/register", methods=("GET", "POST"))
 def register():
-    if request.method == "POST":
+    if "logged_in" in session:
+        flash("User is logged in.")
+        return redirect(url_for("dash"), 200)
+
+    elif request.method == "POST":
         username = request.form.get("username")
         password = request.form.get("password")
         db = get_db()
@@ -157,3 +166,11 @@ def settings():
 @login_required
 def edit():
     return render_template("/dash/settings/edit.html")
+
+
+@app.route("/dash/signout")
+@login_required
+def sign_out():
+    session.pop("logged_in", None)
+    flash("User succesfully logged out.")
+    return redirect(url_for("index"))
