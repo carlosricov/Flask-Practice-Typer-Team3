@@ -132,3 +132,4 @@ dmypy.json
 # Database Stuff
 flask.sqlite
 *.DS_Store
+

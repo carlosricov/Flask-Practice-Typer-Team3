@@ -64,11 +64,11 @@ def health():
 
 @app.route("/login", methods=("GET", "POST"))
 def login():
-    if "logged_in" in session:
-        flash("User is logged in.")
-        return redirect(url_for("dash"), 200)
+    # if "logged_in" in session:
+    #     flash("User is logged in.")
+    #     return redirect(url_for("dash"), 200)
 
-    elif request.method == "POST":
+    if request.method == "POST":
         username = request.form.get("username")
         password = request.form.get("password")
         db = get_db()
@@ -85,15 +85,17 @@ def login():
         if error == 0:
             session["logged_in"] = True
             flash(f"User {username} logged in!", "success")
-            return redirect(url_for("dash")), 200
-        elif error == 1:
-            flash("Incorrect username", "error")
-            return render_template("login.html"), 418
-        elif error == 2:
-            flash("Incorrect password", "error")
-            return render_template("login.html"), 418
+            return render_template("/dash/home.html"), 200
+        # elif error == 1:
+        #     flash("Incorrect username", "error")
+        #     return render_template("login.html"), 418
+        # elif error == 2:
+        #     flash("Incorrect password", "error")
+        #     return render_template("login.html"), 418
         else:
-            return error, 418
+            # return error, 418
+            flash("Incorrect username or password", "error")
+            return render_template("login.html"), 418
 
     return render_template("login.html")
 
