@@ -95,7 +95,7 @@ def login():
         else:
             return error, 418
 
-    return render_template("login.html")
+    return render_template("login.html"), 200
 
 
 @app.route("/register", methods=("GET", "POST"))
