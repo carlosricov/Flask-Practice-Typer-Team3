@@ -51,7 +51,7 @@ def login_required(f):
 def index():
     if "logged_in" in session:
         flash("User is logged in.")
-        return redirect(url_for("dash"), 200)
+        return redirect(url_for("dash"))
 
     return render_template("index.html")
 
@@ -66,7 +66,7 @@ def health():
 def login():
     if "logged_in" in session:
         flash("User is logged in.")
-        return redirect(url_for("dash"), 200)
+        return redirect(url_for("dash"))
 
     elif request.method == "POST":
         username = request.form.get("username")
@@ -85,7 +85,7 @@ def login():
         if error == 0:
             session["logged_in"] = True
             flash(f"User {username} logged in!", "success")
-            return redirect(url_for("dash")), 200
+            return redirect(url_for("dash"))
         elif error == 1:
             flash("Incorrect username", "error")
             return render_template("login.html"), 418
@@ -102,7 +102,7 @@ def login():
 def register():
     if "logged_in" in session:
         flash("User is logged in.")
-        return redirect(url_for("dash"), 200)
+        return redirect(url_for("dash"))
 
     elif request.method == "POST":
         username = request.form.get("username")
@@ -127,7 +127,7 @@ def register():
             )
             db.commit()
             flash(f"User {username} created successfully", "success")
-            return render_template("index.html")
+            return redirect(url_for("login"))
         elif error == 1:
             flash("Username is required", "error")
             return render_template("register.html"), 418

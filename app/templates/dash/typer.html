@@ -1,65 +1,171 @@
-<html lang="en">
-  <head>
-    <title>Programmer Typer Speed</title>
+{% extends 'base.html' %}
 
-    <!-- link the CSS file here -->
-    <link rel="stylesheet" href="../static/styles/typer.css" />
-  </head>
-  <body>
-    <nav
-      class="navbar navbar-expand-lg navbar-dark bg-transparent fixed-top"
-      id="registerNav"
-    >
-      <div class="container px-4">
-        <a class="navbar-brand" href="/dash/home">Back to dashboard</a>
+{% block style %}
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+<link rel="stylesheet" href="{{ url_for('static', filename='styles/landing.css') }}">
+<link rel="stylesheet" href="../static/styles/dash.css">
+<link rel="stylesheet" href="../static/styles/typer.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.min.css">
+<script defer src="https://use.fontawesome.com/releases/v5.0.13/js/solid.js" integrity="sha384-tzzSw1/Vo+0N5UhStP3bvwWPq+uvzCMfrN1fEFe+xBmv1C/AtVX5K0uZtmcHitFZ" crossorigin="anonymous"></script>
+<script defer src="https://use.fontawesome.com/releases/v5.0.13/js/fontawesome.js" integrity="sha384-6OIrr52G08NpOFSZdxxz1xdNSndlD4vdcf/q2myIUVO0VsqaGHJsB0RaBE01VTOY" crossorigin="anonymous"></script>
+<script src="../static/js/animation.js"></script>
+{% endblock %}
+
+{% block head %}
+<title>Practice Typer</title>
+{% endblock %}
+
+{% block body %}
+<div class="wrapper text-white">
+  <nav id="sidebar">
+    <div id="dismiss">
+        <i class="fas fa-arrow-left"></i>
+    </div>
+
+    <div class="sidebar-header">
+        <h3>Practice<br> Typer</h3>
+    </div>
+
+    <ul class="list-unstyled components">
+        <p>Navigation Menu</p>
+        <li>
+            <a href="/dash/home">Home</a>
+        </li>
+        <li>
+            <a href="#">Stats</a>
+        </li>
+        <li>
+            <a href="/dash/settings">Settings</a>
+        </li>
+    </ul>
+
+    <div class="container fluid" id="but2">
+      <a href="/dash/signout"><button class="btn btn-block btn-success d-flex align-items-center justify-content-center">Sign Out</button></a>
+        <div class="container-fluid text-center">
+            <p id="side-footer">Powered by <a href="https://flask.palletsprojects.com/en/2.0.x/" style="color: white; text-decoration:underline;">Flask</a>.</p>
+        </div>
+    </div>
+  </nav>
+
+  <div class="content px-5">
+
+    <nav class="navbar navbar-expand-lg navbar-dark bg-transparent">
+      <div class="container-fluid">
+          <button type="button" id="sidebarCollapse" class="btn btn-bg-transparent text-white shadow-sm">
+              <i class="fas fa-align-left"></i>
+              <span>Toggle Sidebar</span>
+          </button>
+          <button class="btn btn-dark d-inline-block d-lg-none ml-auto" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+              <i class="fas fa-align-justify"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+              <ul class="nav navbar-nav ml-auto">
+                  <li class="nav-item active">
+                      <a class="nav-link" href="/dash/home">Back to Home</a>
+                  </li>
+              </ul>
+          </div>
       </div>
     </nav>
-    <div class="container">
-      <div class="heading">Programmer Typer Speed</div>
-      <div class="header">
-        <div class="wpm">
-          <div class="header_text">WPM</div>
-          <div class="curr_wpm">100</div>
+
+    <div class="container text-center" id="txt-cont">
+      <h1>Start a Session!</h1>
+      <br>
+    </div>
+
+    <div class="container d-flex justify-content-center pt-5 px-20">
+      <div class="container border border-dark d-flex justify-content-center flex-column bg-goodblu wpm">
+        <div class="container d-flex justify-content-center pt-1">
+          <h5>WPM</h5>
         </div>
-        <div class="cpm">
-          <div class="header_text">CPM</div>
-          <div class="curr_cpm">100</div>
-        </div>
-        <div class="errors">
-          <div class="header_text">Errors</div>
-          <div class="curr_errors">0</div>
-        </div>
-        <div class="timer">
-          <div class="header_text">Time</div>
-          <div class="curr_time">60s</div>
-        </div>
-        <div class="accuracy">
-          <div class="header_text">% Accuracy</div>
-          <div class="curr_accuracy">100</div>
-        </div>
+        <h6 class="container d-flex justify-content-center curr_wpm">--</h6>
       </div>
 
+      <div class="container border border-dark d-flex justify-content-center flex-column bg-goodblu cpm">
+        <div class="container d-flex justify-content-center pt-1">
+          <h5>CPM</h5>
+        </div>
+        <h6 class="container d-flex justify-content-center curr_cpm">--</h6>
+      </div>
+
+      <div class="container border border-dark d-flex justify-content-center flex-column bg-goodblu errors">
+        <div class="container d-flex justify-content-center pt-1">
+          <h5>Errors</h5>
+        </div>
+        <h6 class="container d-flex justify-content-center curr_errors">--</h6>
+      </div>
+
+      <div class="container border border-dark d-flex justify-content-center flex-column bg-goodblu timer">
+        <div class="container d-flex justify-content-center pt-1">
+          <h5>Time</h5>
+        </div>
+        <h6 class="container d-flex justify-content-center curr_time">--</h6>
+      </div>
+
+      <div class="container border border-dark d-flex justify-content-center flex-column bg-goodblu accuracy">
+        <div class="container d-flex justify-content-center pt-1">
+          <h5>Acc.</h5>
+        </div>
+        <h6 class="container d-flex justify-content-center curr_accuracy">--</h6>
+      </div>
+    </div>
+
+    <div class="container fluid d-flex justify-content-center py-5">
       <label for="language-select">Choose a language:</label>
 
       <select name="language" id="language-select">
-        <option value="">--Please choose an option--</option>
-        <option value="python">python</option>
-        <option value="js">js</option>
-        <option value="java">java</option>
+        <option value="" disabled>--Please choose an option--</option>
+        <option value="Python">Python</option>
+        <option value="Javascript">Javascript</option>
+        <option value="Java">Java</option>
       </select>
+    </div>
 
-      <div class="quote">Click on the area below to start the game.</div>
+    <div class="quote text-center rounded px-5">Click on the area below to start a practice session</div>
       <textarea
-        class="input_area"
-        placeholder="start typing here..."
+        class="input_area container-fluid text-center pt-4"
+        rows="1"
+        placeholder="Start typing here..."
         oninput="processCurrentText()"
         onfocus="startGame()"
       >
       </textarea>
-      <button class="restart_btn" onclick="resetValues()">Restart</button>
     </div>
+    <div class="container fluid d-flex justify-content-center">
+      <button accesskey="z" class="btn btn-lg restart_btn rounded " onclick="resetValues()">Restart</button>
+    </div>
+</div>
 
-    <!-- link the JavaScript file here -->
-    <script src="../static/js/typer.js"></script>
-  </body>
-</html>
+<div class="overlay"></div>
+
+<!-- link the JavaScript file here -->
+<script src="../static/js/typer.js"></script>
+<!-- jQuery CDN - Slim version (=without AJAX) -->
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<!-- Popper.JS -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js" integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ" crossorigin="anonymous"></script>
+<!-- Bootstrap JS -->
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
+<!-- jQuery Custom Scroller CDN -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.concat.min.js"></script>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $("#sidebar").mCustomScrollbar({
+            theme: "minimal"
+        });
+
+        $('#dismiss, .overlay').on('click', function () {
+            $('#sidebar').removeClass('active');
+            $('.overlay').removeClass('active');
+        });
+
+        $('#sidebarCollapse').on('click', function () {
+            $('#sidebar').addClass('active');
+            $('.overlay').addClass('active');
+            $('.collapse.in').toggleClass('in');
+            $('a[aria-expanded=true]').attr('aria-expanded', 'false');
+        });
+    });
+</script>
+{% endblock %}
