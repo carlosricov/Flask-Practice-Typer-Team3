@@ -49,7 +49,7 @@ def login_required(f):
 # Landing page.
 @app.route("/")
 def index():
-    if 'logged_in' in session:
+    if "logged_in" in session:
         flash("User is logged in.")
         return redirect(url_for("dash"))
 
@@ -64,7 +64,7 @@ def health():
 
 @app.route("/login", methods=("GET", "POST"))
 def login():
-    if 'logged_in' in session:
+    if "logged_in" in session:
         flash("User is logged in.")
         return redirect(url_for("dash"))
 
@@ -100,7 +100,7 @@ def login():
 
 @app.route("/register", methods=("GET", "POST"))
 def register():
-    if 'logged_in' in session:
+    if "logged_in" in session:
         flash("User is logged in.")
         return redirect(url_for("dash"))
 
@@ -167,9 +167,10 @@ def settings():
 def edit():
     return render_template("/dash/settings/edit.html")
 
+
 @app.route("/dash/signout")
 @login_required
 def sign_out():
-    session.pop('logged_in', None)
+    session.pop("logged_in", None)
     flash("User succesfully logged out.")
     return redirect(url_for("index"))
