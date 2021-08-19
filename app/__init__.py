@@ -140,7 +140,7 @@ def register():
         else:
             return error, 418
 
-    return render_template("register.html")
+    return render_template("register.html"), 200
 
 
 # More pages go below here.
