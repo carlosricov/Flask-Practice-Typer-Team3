@@ -8,3 +8,5 @@ Werkzeug==2.0.1
 python-decouple==3.4
 Flask-Toastr
 gunicorn==20.1.0
+selenium
+pytest
