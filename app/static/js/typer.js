@@ -11,10 +11,31 @@ let js_array = [
 
 let py_array = [
   'nameInput = input("enter your name")',
-  'print("Hello + nameInput")',
+  'print("Hello + nameInput")'
 ];
 
-let java_array = ['System.out.println("Hello world")'];
+let java_array = [
+  'System.out.println("Hello world");',
+  'Integer.parseInt("400");',
+  'import java.util.*;',
+  'public static void main(String[] args)',
+  'Math.pow(4,8);',
+  'String num = String.valueOf(5);',
+  'java.util.Date = java.text.DateFormat.getDateInstance().parse(date String)',
+  'public class HelloWorld',
+  'public void fetch() throws IOException',
+  'Scanner sc = new Scanner(System.in);',
+  'System.out.print("Hi no space.");',
+  'for (int i = 0; i < 100; i++)',
+  'int i = sc.nextInt();',
+  'while(int i < 0)',
+  'String text = "Hello!";',
+  'if (text != null)',
+  'private static Integer returnInt()',
+  'return num;',
+  'int x = 6008;',
+  'Double result = x/num;'
+];
 
 // selecting required elements
 let timer_text = document.querySelector(".curr_time");
@@ -44,7 +65,7 @@ const select = document.querySelector("#language-select");
 
 function updateQuote() {
 
-  if (select.value === "python") {
+  if (select.value === "Python") {
     quote_text.textContent = null;
     current_quote = py_array[quoteNo];
 
@@ -59,7 +80,7 @@ function updateQuote() {
     // roll over to the first quote
     if (quoteNo < py_array.length - 1) quoteNo++;
     else quoteNo = 0;
-  } else if (select.value == "js") {
+  } else if (select.value == "Javascript") {
     quote_text.textContent = null;
     current_quote = js_array[quoteNo];
 
@@ -190,7 +211,9 @@ function finishGame() {
 }
 
 function startGame() {
-  resetValues();
+
+  timeleft = TIME_LIMIT;
+  input_area.placeholder = " ";
   updateQuote();
 
   // clear old and start a new timer
@@ -200,6 +223,7 @@ function startGame() {
 
 function resetValues() {
   timeLeft = TIME_LIMIT;
+  clearInterval(timer);
   timeElapsed = 0;
   errors = 0;
   total_errors = 0;
@@ -209,11 +233,13 @@ function resetValues() {
   input_area.disabled = false;
 
   input_area.value = "";
-  quote_text.textContent = "Click on the area below to start the game.";
-  accuracy_text.textContent = 100;
+  input_area.placeholder = "Click here to start...";
+  quote_text.textContent = "Click on the area below to start a new session";
+  accuracy_text.textContent = "--";
   timer_text.textContent = timeLeft + "s";
   error_text.textContent = 0;
-  restart_btn.style.display = "none";
+  cpm_text.textContent = "--";
+  wpm_text.textContent = "--";
   cpm_group.style.display = "none";
   wpm_group.style.display = "none";
 }
