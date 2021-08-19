@@ -30,3 +30,28 @@ class TestApi(unittest.TestCase):
         with app.test_client() as client:
             response = client.post("/register")
             assert response._status_code == 418
+
+    def test_pt_endpoint_dashHome_get_returns_302(self):
+        with app.test_client() as client:
+            response = client.get("/dash/home")
+            assert response._status_code == 302
+
+    def test_pt_endpoint_dashTyper_get_returns_302(self):
+        with app.test_client() as client:
+            response = client.get("/dash/typer")
+            assert response._status_code == 302
+
+    def test_pt_endpoint_dashSettings_get_returns_302(self):
+        with app.test_client() as client:
+            response = client.get("/dash/settings")
+            assert response._status_code == 302
+
+    def test_pt_endpoint_dashSettingsEdit_get_returns_302(self):
+        with app.test_client() as client:
+            response = client.get("/dash/settings/edit")
+            assert response._status_code == 302
+
+    def test_pt_endpoint_dashSignout_get_returns_302(self):
+        with app.test_client() as client:
+            response = client.get("/dash/signout")
+            assert response._status_code == 302
