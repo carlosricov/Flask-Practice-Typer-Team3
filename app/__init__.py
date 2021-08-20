@@ -122,13 +122,12 @@ def register():
             error = "Username is required"
         elif not password:
             error = "Password is required"
-        elif (
-            db.execute("SELECT id FROM user WHERE username = ?", (username,)).fetchone()
-            is not None
-        ):
+        elif db.execute(
+            "SELECT id FROM user WHERE username = ?", (username,)).fetchone()
+            is not None:
             error = f"User {username} is already registered."
 
-        if error == None:
+        if error is None:
             db.execute(
                 "INSERT INTO user (username, password) VALUES (?, ?)",
                 (username, generate_password_hash(password)),
@@ -148,7 +147,7 @@ def register():
         #     return render_template("register.html"), 418
         else:
             # return error, 418
-            return render_template("register.html")
+            return render_template("register.html"), 418
 
     return render_template("register.html")
 
