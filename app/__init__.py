@@ -191,4 +191,5 @@ def edit():
 def sign_out():
     session.pop("logged_in", None)
     flash("User succesfully logged out.")
-    return redirect(url_for("index"))
+    # return redirect(url_for("index"))
+    return render_template("index.html")
