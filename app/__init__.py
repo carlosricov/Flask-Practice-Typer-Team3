@@ -81,7 +81,7 @@ def login():
             error = "Incorrect username"
         elif not check_password_hash(user["password"], password):
             error = "Incorrect password"
-        
+
         if error is None:
             session["logged_in"] = True
             flash(f"User {username} logged in!", "success")
@@ -91,9 +91,9 @@ def login():
             return render_template("login.html"), 418
 
         # if error == 0:
-            # session["logged_in"] = True
-            # flash(f"User {username} logged in!", "success")
-            # return redirect(url_for("dash"))
+        # session["logged_in"] = True
+        # flash(f"User {username} logged in!", "success")
+        # return redirect(url_for("dash"))
         # elif error == 1:
         #     flash("Incorrect username", "error")
         #     return render_template("login.html"), 418
