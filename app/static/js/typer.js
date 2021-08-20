@@ -3,10 +3,10 @@ let TIME_LIMIT = 60;
 
 // define arrays to be used
 let js_array = [
-  'let x = 2',
-  'let y = 2',
-  'let xy = x * y',
-  'console.log(xy)',
+  'let x = 2;',
+  'let y = 2;',
+  'let xy = x * y;',
+  'console.log(xy);',
   'const [username, setUsername] = useState("");',
   'const [email, setEmail] = useState("");',
   'const [password, setPassword] = useState("");',
