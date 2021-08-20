@@ -66,45 +66,36 @@ def health():
 def login():
     if "logged_in" in session:
         flash("User is logged in.")
-        return redirect(url_for("dash"))
 
     elif request.method == "POST":
         username = request.form.get("username")
         password = request.form.get("password")
         db = get_db()
-        error = 0
+        error = None
         user = db.execute(
             "SELECT * FROM user WHERE username = ?", (username,)
         ).fetchone()
 
         if user is None:
-            error = 1
+            error = "Incorrect username"
         elif not check_password_hash(user["password"], password):
-            error = 2
+            error = "Incorrect password"
 
-        if error == 0:
+        if error is None:
             session["logged_in"] = True
             flash(f"User {username} logged in!", "success")
-            return redirect(url_for("dash"))
-        elif error == 1:
-            flash("Incorrect username", "error")
-            return render_template("login.html"), 418
-        elif error == 2:
-            flash("Incorrect password", "error")
-            return render_template("login.html"), 418
+            return render_template("/dash/home.html")
         else:
-            return error, 418
+            flash("Incorrect username or password", "error")
+            return render_template("login.html"), 418
 
     return render_template("login.html")
 
 
 @app.route("/register", methods=("GET", "POST"))
 def register():
-    if "logged_in" in session:
-        flash("User is logged in.")
-        return redirect(url_for("dash"))
 
-    elif request.method == "POST":
+    if request.method == "POST":
         username = request.form.get("username")
         password = request.form.get("password")
         db = get_db()
@@ -127,7 +118,7 @@ def register():
             )
             db.commit()
             flash(f"User {username} created successfully", "success")
-            return redirect(url_for("login"))
+            return render_template("index.html")
         elif error == 1:
             flash("Username is required", "error")
             return render_template("register.html"), 418
@@ -173,4 +164,4 @@ def edit():
 def sign_out():
     session.pop("logged_in", None)
     flash("User succesfully logged out.")
-    return redirect(url_for("index"))
+    return render_template("index.html")
