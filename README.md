@@ -105,7 +105,8 @@ MLH Fellowship - [@MLHacks](https://twitter.com/MLHacks) - admissions@mlhfellows
 
 Project Link: [https://github.com/carlosricov/Flask-Practice-Typer-Team3](https://github.com/carlosricov/Flask-Practice-Typer-Team3)
 
-
+## Page running on AWS
+- *[Practice Typer](https://accutype.duckdns.org/)*
 
 <!-- MARKDOWN LINKS & IMAGES -->
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
