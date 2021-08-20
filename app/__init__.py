@@ -108,8 +108,8 @@ def login():
 
 @app.route("/register", methods=("GET", "POST"))
 def register():
-    if "logged_in" in session:
-        flash("User is logged in.")
+    # if "logged_in" in session:
+    #     flash("User is logged in.")
         # return redirect(url_for("dash"))
 
     elif request.method == "POST":
@@ -154,6 +154,7 @@ def register():
         #     return render_template("register.html"), 418
         else:
             # return error, 418
+            flash(f"User {username} is already registered.", "error")
             return render_template("register.html"), 418
 
     return render_template("register.html")
