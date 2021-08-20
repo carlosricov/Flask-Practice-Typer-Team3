@@ -66,7 +66,6 @@ def health():
 def login():
     if "logged_in" in session:
         flash("User is logged in.")
-        # return redirect(url_for("dash"))
 
     elif request.method == "POST":
         username = request.form.get("username")
@@ -90,18 +89,6 @@ def login():
             flash("Incorrect username or password", "error")
             return render_template("login.html"), 418
 
-        # if error == 0:
-        # session["logged_in"] = True
-        # flash(f"User {username} logged in!", "success")
-        # return redirect(url_for("dash"))
-        # elif error == 1:
-        #     flash("Incorrect username", "error")
-        #     return render_template("login.html"), 418
-        # elif error == 2:
-        #     flash("Incorrect password", "error")
-        #     return render_template("login.html"), 418
-        # else:
-        #     return error, 418
 
     return render_template("login.html")
 
@@ -179,5 +166,4 @@ def edit():
 def sign_out():
     session.pop("logged_in", None)
     flash("User succesfully logged out.")
-    # return redirect(url_for("index"))
     return render_template("index.html")
