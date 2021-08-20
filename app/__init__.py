@@ -89,7 +89,6 @@ def login():
             flash("Incorrect username or password", "error")
             return render_template("login.html"), 418
 
-
     return render_template("login.html")
 
 
