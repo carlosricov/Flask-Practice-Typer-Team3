@@ -75,15 +75,19 @@
 * [Flask](https://flask.palletsprojects.com/en/2.0.x/)
 
 ## Installation
-1. Have python3, pip3
-2. Run: pip3 install virtualenv
-3. Run: virtualenv env
-4. Activate env using:
-    * Linux: source env/bin/activate
-    * Windows: .\env\Scripts\activate
-5. Run: pip3 install -r requirements.txt
-6. Run: flask init-db
-7. Run: flask run
+1. Make sure you have python3 and pip3 installed.
+2. download the project and cd into it's folder.
+3. Inside the project folder do the following steps.
+4. Run: ```pip3 install virtualenv```
+5. Run: ```virtualenv env```
+6. Activate env using:
+    * Linux: ```source env/bin/activate```
+    * Windows: ```.\env\Scripts\activate```
+7. Run: ```pip3 install -r requirements.txt```
+8. Run: ```flask init-db```
+9. Run: ```flask run```
+10. CTRL + Click on the https:// link or copy it to your browser.
+11. Enjoy Practice Typer locally! (try out the deployed version using the link on the "Page running on AWS" section of this README file.)
 
 <!-- USAGE EXAMPLES -->
 ## Usage
