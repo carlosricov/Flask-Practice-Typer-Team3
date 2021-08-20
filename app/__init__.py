@@ -108,55 +108,43 @@ def login():
 
 @app.route("/register", methods=("GET", "POST"))
 def register():
-    # if "logged_in" in session:
-    #     flash("User is logged in.")
-        # return redirect(url_for("dash"))
+    
 
-    elif request.method == "POST":
+    if request.method == "POST":
         username = request.form.get("username")
         password = request.form.get("password")
         db = get_db()
-        error = None
+        error = 0
 
-        # if not username:
-        #     error = "Username is required"
-        # elif not password:
-        #     error = "Password is required"
-        # elif db.execute(
-        #     "SELECT id FROM user WHERE username = ?", (username,)).fetchone() is not None:
-        #     error = f"User {username} is already registered."
         if not username:
-            error = "Username is required."
+            error = 1
         elif not password:
-            error = "Password is required."
+            error = 2
         elif (
             db.execute("SELECT id FROM user WHERE username = ?", (username,)).fetchone()
             is not None
         ):
-            error = f"User {username} is already registered."
+            error = 3
 
-        if error is None:
+        if error == 0:
             db.execute(
                 "INSERT INTO user (username, password) VALUES (?, ?)",
                 (username, generate_password_hash(password)),
             )
             db.commit()
             flash(f"User {username} created successfully", "success")
-            # return redirect(url_for("login"))
-            return render_template("login.html")
-        # elif error == 1:
-        #     flash("Username is required", "error")
-        #     return render_template("register.html"), 418
-        # elif error == 2:
-        #     flash("Password is required", "error")
-        #     return render_template("register.html"), 418
-        # elif error == 3:
-        #     flash(f"User {username} is already registered.", "error")
-        #     return render_template("register.html"), 418
-        else:
-            # return error, 418
+            return render_template("index.html")
+        elif error == 1:
+            flash("Username is required", "error")
+            return render_template("register.html"), 418
+        elif error == 2:
+            flash("Password is required", "error")
+            return render_template("register.html"), 418
+        elif error == 3:
             flash(f"User {username} is already registered.", "error")
             return render_template("register.html"), 418
+        else:
+            return error, 418
 
     return render_template("register.html")
 
