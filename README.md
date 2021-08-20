@@ -79,8 +79,8 @@
 2. Run: pip3 install virtualenv
 3. Run: virtualenv env
 4. Activate env using:
-  * Linux: source env/bin/activate
-  * Windows: .\env\Scripts\activate
+    * Linux: source env/bin/activate
+    * Windows: .\env\Scripts\activate
 5. Run: pip3 install -r requirements.txt
 6. Run: flask init-db
 7. Run: flask run
