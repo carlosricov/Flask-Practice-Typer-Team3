@@ -34,5 +34,11 @@ jobs:
      - name: Checkout files
        uses: actions/checkout@v2
 
-     - name: Test
+     - name: Bash Test
        run: sleep 5 && bash test-endpoints.sh
+
+     - name: Checkout files
+       uses: actions/checkout@v2
+
+     - name: Pytest Test
+       run: sleep 5 && 'cd ${{ secrets.PROJECT_ROOT }} && source env/bin/activate && python -m pytest'
