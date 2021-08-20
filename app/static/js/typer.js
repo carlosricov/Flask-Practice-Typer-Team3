@@ -3,18 +3,67 @@ let TIME_LIMIT = 60;
 
 // define arrays to be used
 let js_array = [
-  'let x = 2',
-  'let y = 2',
-  'let xy = x * y',
-  'console.log(xy)'
+  'let x = 2;',
+  'let y = 2;',
+  'let xy = x * y;',
+  'console.log(xy);',
+  'const [username, setUsername] = useState("");',
+  'const [email, setEmail] = useState("");',
+  'const [password, setPassword] = useState("");',
+  'const [confirmpassword, setConfirmPassword] = useState("");',
+  'const [error, setError] = useState("");',
+  'let cpm_text = document.querySelector(".curr_cpm");',
+  'let restart_btn = document.querySelector(".restart_btn");',
+  'return next(new ErrorResponse("Not authorized to access this router", 401));',
+  'token = req.headers.authorization.split(" ")[1];',
+  'error = new ErrorResponse(message, 400);',
+  'const message = Object.values(err.errors).map((val) => val.message);',
+  'error.message = err.message;'
 ];
 
 let py_array = [
   'nameInput = input("enter your name")',
   'print("Hello + nameInput")',
+  'def iscoroutinefunction(func: t.Any) -> bool:',
+  'while inspect.ismethod(func):',
+  'static_url_path: t.Optional[str] = None,',
+  'static_folder: t.Optional[t.Union[str, os.PathLike]] = "static",',
+  'static_host: t.Optional[str] = None,',
+  'host_matching: bool = False,',
+  'subdomain_matching: bool = False,',
+  'template_folder: t.Optional[str] = "templates",',
+  'instance_path: t.Optional[str] = None,',
+  'instance_relative_config: bool = False,',
+  'import_name=import_name,',
+  'if instance_path is None:',
+  'instance_path = self.auto_find_instance_path()',
+  'template_rendered = _signals.signal("template-rendered")',
+  'before_render_template = _signals.signal("before-render-template")'
+
 ];
 
-let java_array = ['System.out.println("Hello world")'];
+let java_array = [
+  'System.out.println("Hello world");',
+  'Integer.parseInt("400");',
+  'import java.util.*;',
+  'public static void main(String[] args)',
+  'Math.pow(4,8);',
+  'String num = String.valueOf(5);',
+  'java.util.Date = java.text.DateFormat.getDateInstance().parse(date String)',
+  'public class HelloWorld',
+  'public void fetch() throws IOException',
+  'Scanner sc = new Scanner(System.in);',
+  'System.out.print("Hi no space.");',
+  'for (int i = 0; i < 100; i++)',
+  'int i = sc.nextInt();',
+  'while(int i < 0)',
+  'String text = "Hello!";',
+  'if (text != null)',
+  'private static Integer returnInt()',
+  'return num;',
+  'int x = 6008;',
+  'Double result = x/num;'
+];
 
 // selecting required elements
 let timer_text = document.querySelector(".curr_time");
@@ -44,7 +93,7 @@ const select = document.querySelector("#language-select");
 
 function updateQuote() {
 
-  if (select.value === "python") {
+  if (select.value === "Python") {
     quote_text.textContent = null;
     current_quote = py_array[quoteNo];
 
@@ -59,7 +108,7 @@ function updateQuote() {
     // roll over to the first quote
     if (quoteNo < py_array.length - 1) quoteNo++;
     else quoteNo = 0;
-  } else if (select.value == "js") {
+  } else if (select.value == "Javascript") {
     quote_text.textContent = null;
     current_quote = js_array[quoteNo];
 
@@ -190,7 +239,9 @@ function finishGame() {
 }
 
 function startGame() {
-  resetValues();
+
+  timeleft = TIME_LIMIT;
+  input_area.placeholder = " ";
   updateQuote();
 
   // clear old and start a new timer
@@ -200,6 +251,7 @@ function startGame() {
 
 function resetValues() {
   timeLeft = TIME_LIMIT;
+  clearInterval(timer);
   timeElapsed = 0;
   errors = 0;
   total_errors = 0;
@@ -209,11 +261,13 @@ function resetValues() {
   input_area.disabled = false;
 
   input_area.value = "";
-  quote_text.textContent = "Click on the area below to start the game.";
-  accuracy_text.textContent = 100;
+  input_area.placeholder = "Click here to start...";
+  quote_text.textContent = "Click on the area below to start a new session";
+  accuracy_text.textContent = "--";
   timer_text.textContent = timeLeft + "s";
   error_text.textContent = 0;
-  restart_btn.style.display = "none";
+  cpm_text.textContent = "--";
+  wpm_text.textContent = "--";
   cpm_group.style.display = "none";
   wpm_group.style.display = "none";
 }

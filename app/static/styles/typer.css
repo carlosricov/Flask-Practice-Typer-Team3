@@ -1,35 +1,14 @@
-body {
-    background-color: dodgerblue;
-    color: black;
-    text-align: center;
-  }
-    
-  .container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-    
-  .heading {
-    margin-bottom: 20px;
-    font-size: 3rem;
-    color: black;
-  }
-    
-  .header {
-    display: flex;
-    align-items: center;
-  }
+
     
   .timer, .errors, .accuracy,
   .cpm, .wpm {
-    background-color: #ccda46;
     height: 60px;
     width: 70px;
     margin: 8px;
-    padding: 12px;
+    padding: 8px;
     border-radius: 20%;
-    box-shadow: black 5px 8px 5px;
+    /*box-shadow: black 5px 8px 5px;*/
+    box-shadow: #240090 5px 8px 5px;
   }
     
   .cpm, .wpm  {
@@ -41,40 +20,56 @@ body {
     font-size: 0.6rem;
     font-weight: 600;
   }
+
+  .px-20 {
+    padding-left: 160px;
+    padding-right: 160px;
+  }
     
   .curr_time, .curr_errors,
   .curr_accuracy, .curr_cpm,
   .curr_wpm {
-    font-size: 2.75rem;
+
+  }
+
+  .bg-goodblu {
+    background-color: #3500d3;
   }
     
   .quote {
-    background-color: #ccda46;
+    background-color: #3500d3;
     font-size: 1.5rem;
     margin: 10px;
-    padding: 25px;
-    box-shadow: black 5px 8px 5px;
+    padding: 14px;
+    box-shadow: #240090 5px 8px 5px;
   }
     
   .input_area {
-    background-color: #f5f5c6;
-    height: 80px;
-    width: 40%;
+    background-color: #282828;
+    border-color: #282828;
+    color: white;
+
     font-size: 1.5rem;
     font-weight: 600;
     margin: 15px;
     padding: 20px;
     border: 0px;
-    box-shadow: black 5px 8px 5px;
+    height: 100v;
+
   }
     
   .restart_btn {
-    display: none;
-    background-color: #326765;
+    background-color: #282828;
+    color: #fff;
     font-size: 1.5rem;
     padding: 10px;
-    border: 0px;
-    box-shadow: black 5px 8px 5px;
+  }
+
+  .restart_btn:hover {
+    background-color: #3500d3;
+    box-shadow: #240090 5px 8px 5px;
+    color: #fff;
+
   }
     
   .incorrect_char {
@@ -88,7 +83,7 @@ body {
 
    /* Dropdown Button */
 .dropbtn {
-    background-color: #3498DB;
+    background-color: #3500d3;
     color: white;
     padding: 16px;
     font-size: 16px;
@@ -98,7 +93,7 @@ body {
   
   /* Dropdown button on hover & focus */
   .dropbtn:hover, .dropbtn:focus {
-    background-color: #2980B9;
+    background-color: #3500d3;
   }
   
   /* The container <div> - needed to position the dropdown content */
@@ -119,7 +114,7 @@ body {
   
   /* Links inside the dropdown */
   .dropdown-content a {
-    color: black;
+    color: #fff;
     padding: 12px 16px;
     text-decoration: none;
     display: block;
@@ -137,7 +132,6 @@ footer {
 }
 
 label {
-    font-size: 1rem;
     padding-right: 10px;
 }
 
@@ -151,6 +145,17 @@ footer {
     position: absolute;
     bottom: 30px;
     left: 30px;
+}
+
+textarea {
+  border: none;
+  overflow: auto;
+  outline: none;
+
+  -webkit-box-shadow: none;
+  -moz-box-shadow: none;
+  box-shadow: none;
+  resize: none;
 }
 
 /* .output {
