@@ -29,7 +29,7 @@ jobs:
          SSH_IP: ${{ secrets.SSH_IP }}
     
      - name: Deploy Site
-       run: ssh my-vm 'cd ${{ secrets.PROJECT_ROOT }} && git fetch && git reset --hard origin/main && COMPOSE_HTTP_TIMEOUT=200 docker-compose down && COMPOSE_HTTP_TIMEOUT=200 docker-compose up -d --build'
+       run: ssh my-vm 'cd ${{ secrets.PROJECT_ROOT }} && git fetch && git reset --hard origin/main && COMPOSE_HTTP_TIMEOUT=300 docker-compose down && COMPOSE_HTTP_TIMEOUT=300 docker-compose up -d --build'
       
      - name: Checkout files
        uses: actions/checkout@v2
@@ -41,4 +41,4 @@ jobs:
        uses: actions/checkout@v2
 
      - name: Pytest Test
-       run: sleep 5 && 'cd ${{ secrets.PROJECT_ROOT }} && source env/bin/activate && python -m pytest'
+       run: sleep 5 && ssh my-vm 'cd ${{ secrets.PROJECT_ROOT }} && source env/bin/activate && python -m pytest'
