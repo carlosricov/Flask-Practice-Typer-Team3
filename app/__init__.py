@@ -66,7 +66,8 @@ def health():
 def login():
     if "logged_in" in session:
         flash("User is logged in.")
-        return redirect(url_for("dash"))
+        # return redirect(url_for("dash"))
+
 
     elif request.method == "POST":
         username = request.form.get("username")
@@ -85,7 +86,7 @@ def login():
         if error is None:
             session["logged_in"] = True
             flash(f"User {username} logged in!", "success")
-            return redirect(url_for("dash"))
+            return render_template("/dash/home.html")
         else:
             flash("Incorrect username or password", "error")
             return render_template("login.html"), 418
