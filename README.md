@@ -31,10 +31,10 @@
     <img src="images/logo.png" alt="Logo" width="600" height="180">
   </a>
 
-  <h1 align="center">Flask-Practice-Typer-Team3</h1>
+  <h1 align="center">Practice Typer</h1>
 
   <p align="center">
-    A Flask application dedicated to improving your programming typing speed.
+    A website capable of  improving your skills as a programmer through the wonders of retyping. We aim to improve your typing speed, adaptability to different languages, and overall comfort by giving you the opportunity to retype code snippets.
     <br />
     <a href="https://github.com/carlosricov/Flask-Practice-Typer-Team3"><strong>Explore the docs »</strong></a>
     <br />
@@ -77,17 +77,19 @@
 <!-- USAGE EXAMPLES -->
 ## Usage
 
-1. TO DO
-2. TO DO
+1. Create an account.
+2. Access a practice session.
+3. Type out as many code snippets as possible in 60 seconds using Python, Javascript, or Java.
+4. Watch how the website displays your stats like errors and accuracy.
 
 
 <!-- CONTRIBUTIONS -->
 ## Contributions
 
-1. Carlos Ricoveri :
-2. Gibson Sanchez :
-3. Juan Carlos Hurtado :
-4. Valerie Mac Comish : README
+1. Carlos Ricoveri : Landing page, Dashboard page, Settings page
+2. Gibson Sanchez : Register and Login pages, Typer feature, Troubleshooting
+3. Juan Carlos Hurtado : Register and Login pages, Signout page, Python testing
+4. Valerie Mac Comish : Containarization, Testing with bash script, Documentation
 
 
 
@@ -118,4 +120,4 @@ Project Link: [https://github.com/carlosricov/Flask-Practice-Typer-Team3](https:
 [license-url]: https://github.com/carlosricov/Flask-Practice-Typer-Team3/blob/master/LICENSE
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
 [linkedin-url]: https://www.linkedin.com/company/major-league-hacking/mycompany/
-[product-screenshot]: images/screenshot.png
+[product-screenshot]: images/screenshot1.png
