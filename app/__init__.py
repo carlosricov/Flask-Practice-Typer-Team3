@@ -72,28 +72,36 @@ def login():
         username = request.form.get("username")
         password = request.form.get("password")
         db = get_db()
-        error = 0
+        error = None
         user = db.execute(
             "SELECT * FROM user WHERE username = ?", (username,)
         ).fetchone()
 
         if user is None:
-            error = 1
+            error = "Incorrect username"
         elif not check_password_hash(user["password"], password):
-            error = 2
-
-        if error == 0:
+            error = "Incorrect password"
+        
+        if error is None:
             session["logged_in"] = True
             flash(f"User {username} logged in!", "success")
             return redirect(url_for("dash"))
-        elif error == 1:
-            flash("Incorrect username", "error")
-            return render_template("login.html"), 418
-        elif error == 2:
-            flash("Incorrect password", "error")
-            return render_template("login.html"), 418
         else:
-            return error, 418
+            flash("Incorrect username or password", "error")
+            return render_template("login.html"), 418
+
+        # if error == 0:
+            # session["logged_in"] = True
+            # flash(f"User {username} logged in!", "success")
+            # return redirect(url_for("dash"))
+        # elif error == 1:
+        #     flash("Incorrect username", "error")
+        #     return render_template("login.html"), 418
+        # elif error == 2:
+        #     flash("Incorrect password", "error")
+        #     return render_template("login.html"), 418
+        # else:
+        #     return error, 418
 
     return render_template("login.html")
 
