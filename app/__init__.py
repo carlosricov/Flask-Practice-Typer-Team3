@@ -68,7 +68,6 @@ def login():
         flash("User is logged in.")
         # return redirect(url_for("dash"))
 
-
     elif request.method == "POST":
         username = request.form.get("username")
         password = request.form.get("password")
