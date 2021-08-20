@@ -6,12 +6,40 @@ let js_array = [
   'let x = 2',
   'let y = 2',
   'let xy = x * y',
-  'console.log(xy)'
+  'console.log(xy)',
+  'const [username, setUsername] = useState("");',
+  'const [email, setEmail] = useState("");',
+  'const [password, setPassword] = useState("");',
+  'const [confirmpassword, setConfirmPassword] = useState("");',
+  'const [error, setError] = useState("");',
+  'let cpm_text = document.querySelector(".curr_cpm");',
+  'let restart_btn = document.querySelector(".restart_btn");',
+  'return next(new ErrorResponse("Not authorized to access this router", 401));',
+  'token = req.headers.authorization.split(" ")[1];',
+  'error = new ErrorResponse(message, 400);',
+  'const message = Object.values(err.errors).map((val) => val.message);',
+  'error.message = err.message;'
 ];
 
 let py_array = [
   'nameInput = input("enter your name")',
-  'print("Hello + nameInput")'
+  'print("Hello + nameInput")',
+  'def iscoroutinefunction(func: t.Any) -> bool:',
+  'while inspect.ismethod(func):',
+  'static_url_path: t.Optional[str] = None,',
+  'static_folder: t.Optional[t.Union[str, os.PathLike]] = "static",',
+  'static_host: t.Optional[str] = None,',
+  'host_matching: bool = False,',
+  'subdomain_matching: bool = False,',
+  'template_folder: t.Optional[str] = "templates",',
+  'instance_path: t.Optional[str] = None,',
+  'instance_relative_config: bool = False,',
+  'import_name=import_name,',
+  'if instance_path is None:',
+  'instance_path = self.auto_find_instance_path()',
+  'template_rendered = _signals.signal("template-rendered")',
+  'before_render_template = _signals.signal("before-render-template")'
+
 ];
 
 let java_array = [
