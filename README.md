@@ -51,7 +51,7 @@
 <details open="open">
   <summary><h2 style="display: inline-block">Table of Contents</h2></summary>
   <ol>
-    <li><a href="#home-page">Home Page</a></li>
+    <li><a href="#landing-page">Landing Page</a></li>
     <li><a href="#built-with">Built With</a></li>
     <li><a href="#usage">Usage</a></li>
     <li><a href="#contributions">Contributions</a></li>
@@ -63,7 +63,7 @@
 
 
 <!-- ABOUT THE PROJECT -->
-## Home Page
+## Landing Page
 
 [![Product Name Screen Shot][product-screenshot]](https://example.com)
 
@@ -120,4 +120,4 @@ Project Link: [https://github.com/carlosricov/Flask-Practice-Typer-Team3](https:
 [license-url]: https://github.com/carlosricov/Flask-Practice-Typer-Team3/blob/master/LICENSE
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
 [linkedin-url]: https://www.linkedin.com/company/major-league-hacking/mycompany/
-[product-screenshot]: images/screenshot1.png
+[product-screenshot]: images/landingpage.png
